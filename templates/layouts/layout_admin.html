@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='header_footer.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='forms.css') }}"
+    />
+  </head>
+  <body>
+    <header class="site_container site__header">
+        <nav class="site_navigation">
+          <div class="LOGO">ADMIN</div>
+          <ul>
+            <li><a class="nav__anc" href="#">Users</a></li>
+            <li><a class="nav__anc" href="#">Courses</a></li>
+            <li><a class="nav__anc" href="#">FormsResponse</a></li>
+            <li><a class="nav__anc" href="#">Staff</a></li>
+            <li><a class="nav__anc" href="#">Others</a></li>
+          </ul>
+        </nav>
+        <div>
+        
+          <button class="btn signup" >Log Out</button>
+          <!-- <a href=""></a> -->
+        </div>
+      </header>
+    <div class="site_container">{% block content %} {% endblock %}</div>
+  </body>
+</html>

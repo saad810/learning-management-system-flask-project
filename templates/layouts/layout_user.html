@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='header_footer.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='forms.css') }}"
+    />
+  </head>
+  <body>
+    <header class="site_container site__header">
+        <nav class="site_navigation">
+          <div class="LOGO">CLIENT</div>
+          <ul>
+            <li><a class="nav__anc" href="{{ url_for('client_home') }}">Explore</a></li>
+            <li><a class="nav__anc" href="#">Resources</a></li>
+            <li><a class="nav__anc" href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a class="nav__anc" href="{{ url_for('signup') }}">Sign up</a></li>
+          </ul>
+        </nav>
+        <div>
+        
+          <button class="btn signup" onclick="window.location.href = '{{ url_for('signup') }}'" ">Signup</button>
+          <!-- <a href=""></a> -->
+        </div>
+      </header>
+    <div class="site_container">{% block content %} {% endblock %}</div>
+  </body>
+</html>
