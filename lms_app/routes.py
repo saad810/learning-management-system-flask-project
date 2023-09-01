@@ -150,7 +150,7 @@ def admin_acc_request():
         email = form.email.data
         password = form.password.data
         hashed_password = bcrypt.generate_password_hash(password, 10)
-        acc_type = "U"
+        acc_type = "A"
         acc_status = 0
 
         # Check for duplicate email or username
@@ -214,7 +214,7 @@ def admin_login():
 # admin logout
 
 
-@app.route('/admin-logout', methods=['POST', 'GET'])
+@app.route('/admin/admin-logout', methods=['POST', 'GET'])
 def admin_logout():
     logout_user()
     flash('Logout successfull')
@@ -222,14 +222,38 @@ def admin_logout():
 
 
 # admin user view@app.route('/admin/view-users', methods=['POST', 'GET'])
+@app.route('/admin/view-users', methods=['POST', 'GET'])
+@login_required
 def admin_view_users():
     # Retrieve users with account type 'u' and account status '1'
-    users = User.query.filter_by(acc_type='u', acc_status=1).all()
+    users = User.query.filter_by(acc_type='U').all()
 
     # Retrieve admins with account type 'a' and account status '1'
-    admins = User.query.filter_by(acc_type='a', acc_status=1).all()
+    # admins = User.query.filter_by(acc_type='a', acc_status=1).all()
 
     # Retrieve users with account status '2' (not approved accounts)
-    not_approved_acc = User.query.filter_by(acc_status=2).all()
+    # not_approved_acc = User.query.filter_by(acc_status=2).all()
+    # users = User.query.order_by(User.id)
 
-    return render_template('admin/view_users.html', users=users, admins=admins, not_approved_acc=not_approved_acc, title='View Users')
+    return render_template('admin/view_users_home.html', users=users,  title='View Users')
+
+
+@app.route('/admin/approved_admin', methods=['POST', 'GET'])
+@login_required
+def approved_admin():
+    admins = User.query.filter_by(acc_status = '1' ,acc_type = 'A').all()
+    return render_template('admin/view_approved_admin.html', users=admins)
+
+
+@app.route('/admin/not_approved_admin', methods=['POST', 'GET'])
+@login_required
+def not_approved_admin():
+    admins = User.query.filter_by(acc_type='A', acc_status='0').all()
+    return render_template('admin/view_not_app_admin.html', users=admins)
+
+
+@app.route('/admin/view-contact', methods=['POST', 'GET'])
+@login_required
+def admin_view_contact():
+    contacts = Contact.query.order_by(Contact.id)
+    return render_template('admin/view_contact.html', contact = contacts,title='View Contact')

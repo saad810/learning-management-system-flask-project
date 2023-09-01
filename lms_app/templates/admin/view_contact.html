@@ -1,4 +1,4 @@
-{% extends './layouts/layout_admin.html' %} {% block content %}
+{% extends 'layout_admin.html' %} {% block content %}
 <table>
   <thead>
     <tr>
@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for form in forms %}
+    {% for form in contact %}
     <tr>
       <td>{{ forms.id }}</td>
       <td>{{ forms.name }}</td>

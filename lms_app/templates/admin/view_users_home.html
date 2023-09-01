@@ -1,0 +1,42 @@
+{% extends 'layout_admin.html' %} {% block content %}
+<section class="users-data">
+  <div class="user-class-container">
+    <div class="user-card">
+      <p class="user-card-text">All Users</p>
+      <a href="">view</a>
+    </div>
+    <hr />
+    <div class="user-card">
+      <p class="user-card-text">Approved Admins</p>
+      <a href="{{ url_for('approved_admin') }}">view</a>
+    </div>
+    <hr />
+    <div class="user-card">
+      <p class="user-card-text">Not Approved Admin</p>
+      <a href="{{ url_for('not_approved_admin') }}">view</a>
+    </div>
+    <hr />
+  </div>
+</section>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Accout Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for users in users %}
+    <tr>
+      <td>{{ users.id }}</td>
+      <td>{{ users.username }}</td>
+      <td>{{ users.email }}</td>
+      <td>{{ users.acc_type }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}
