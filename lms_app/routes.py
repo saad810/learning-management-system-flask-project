@@ -34,7 +34,7 @@ def signup():
         email = form.email.data
         password = form.password.data
         hashed_password = bcrypt.generate_password_hash(password, 10)
-        acc_type = "A"
+        acc_type = "U"
 
         # Check for duplicate email or username
 
