@@ -35,6 +35,7 @@ def signup():
         password = form.password.data
         hashed_password = bcrypt.generate_password_hash(password, 10)
         acc_type = "U"
+        acc_status = 2
 
         # Check for duplicate email or username
 
@@ -49,7 +50,8 @@ def signup():
                 username=username,
                 email=email,
                 password=hashed_password,
-                acc_type=acc_type
+                acc_type=acc_type,
+                acc_status=acc_status
             )
             db.session.add(user)
             db.session.commit()
@@ -69,23 +71,28 @@ def signup():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
+        user_acc_appproved = User.query.filter_by(acc_status='2').first()
         user = User.query.filter_by(username=form.username.data).first()
-        # users_with_user_acc = User.query.filter_by(acc_type='U').all()
-        # if users_with_user_acc:
-        if user:
-            #  check hash
-            if bcrypt.check_password_hash(user.password, form.password.data):
-                login_user(user)
-                flash('Login Successfull')
-                return redirect(url_for('user_home'))
+        users_with_user_acc = User.query.filter_by(acc_type='U').all()
+        if users_with_user_acc and user_acc_appproved:
+
+            if user:
+                #  check hash
+                if bcrypt.check_password_hash(user.password, form.password.data):
+                    login_user(user)
+                    flash('Login Successfull')
+                    return redirect(url_for('user_home'))
+                else:
+                    flash('Wrong username or password')
             else:
                 flash('Wrong username or password')
+            # else:
         else:
-            flash('Wrong username or password')
-        # else:
-        #     flash('Login Not Allowed')
+            flash('Login Not Allowed')
+            return redirect(url_for('login'))
 
     return render_template('client/login.html', form=form)
+
 
 # logout route
 
@@ -134,6 +141,48 @@ def user_home():
 
 
 # admin routes
+# account request for admin
+@app.route('/admin/acc-req', methods=['GET', 'POST'])
+def admin_acc_request():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        username = form.username.data
+        email = form.email.data
+        password = form.password.data
+        hashed_password = bcrypt.generate_password_hash(password, 10)
+        acc_type = "U"
+        acc_status = 0
+
+        # Check for duplicate email or username
+
+        duplicate_username = User.query.filter_by(username=username).first()
+
+        if duplicate_username:
+            flash('Username already taken. Please choose another one.')
+            return redirect(url_for('signup'))
+
+        try:
+            user = User(
+                username=username,
+                email=email,
+                password=hashed_password,
+                acc_type=acc_type,
+                acc_status=acc_status
+            )
+            db.session.add(user)
+            db.session.commit()
+            flash('Wait for Approval Email')
+            return redirect(url_for('login'))
+
+        except Exception as e:
+            # Handle any other exceptions that might occur during registration
+            db.session.rollback()  # Rollback the transaction
+            flash('An error occurred during Form Submition.')
+            return redirect(url_for('signup'))
+
+    return render_template('admin/acc_req.html', form=form)
+
+
 @app.route('/admin')
 @login_required
 def admin_home():
@@ -147,7 +196,9 @@ def admin_login():
     if form.validate_on_submit():
         user_admin = User.query.filter_by(username=username).first()
         user_admin_exists = User.query.filter_by(acc_type='A').first()
-        if user_admin and user_admin_exists:
+        user_acc_appproved = User.query.filter_by(acc_status='1').first()
+
+        if user_admin and user_admin_exists and user_acc_appproved:
             #  check hash
             if bcrypt.check_password_hash(user_admin.password, form.password.data):
                 login_user(user_admin)
@@ -156,13 +207,29 @@ def admin_login():
             else:
                 flash('Wrong username or password')
         else:
-            flash('Wrong username or password')
+            flash('Wrong username or password or account not approved')
 
-    return render_template('admin/login.html', form = form)
+    return render_template('admin/login.html', form=form)
 
 # admin logout
+
+
 @app.route('/admin-logout', methods=['POST', 'GET'])
 def admin_logout():
     logout_user()
     flash('Logout successfull')
     return redirect(url_for('login'))
+
+
+# admin user view@app.route('/admin/view-users', methods=['POST', 'GET'])
+def admin_view_users():
+    # Retrieve users with account type 'u' and account status '1'
+    users = User.query.filter_by(acc_type='u', acc_status=1).all()
+
+    # Retrieve admins with account type 'a' and account status '1'
+    admins = User.query.filter_by(acc_type='a', acc_status=1).all()
+
+    # Retrieve users with account status '2' (not approved accounts)
+    not_approved_acc = User.query.filter_by(acc_status=2).all()
+
+    return render_template('admin/view_users.html', users=users, admins=admins, not_approved_acc=not_approved_acc, title='View Users')

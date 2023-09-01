@@ -7,6 +7,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(30), unique=True, nullable=False)
     password = db.Column(db.String(30), nullable=False)
     acc_type = db.Column(db.String(30), nullable=False)
+    acc_status = db.Column(db.Integer, nullable=False, default = 0)
 
     def __repr__(self):
         return f"<User(id={self.id}, username={self.username}, email={self.email}, add_type = {self.acc_type})>"
