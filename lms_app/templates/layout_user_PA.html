@@ -22,21 +22,18 @@
   </head>
   <body>
     <header class="site_container site__header">
-        <nav class="site_navigation">
-          <div class="LOGO">CLIENT</div>
-          <ul>
-            <li><a class="nav__anc" href="{{ url_for('client_home') }}">Explore</a></li>
-            <li><a class="nav__anc" href="#">Resources</a></li>
-            <li><a class="nav__anc" href="{{ url_for('contact') }}">Contact</a></li>
-            <li><a class="nav__anc" href="{{ url_for('signup') }}">Sign up</a></li>
-          </ul>
-        </nav>
-        <div>
-        
-          <button class="btn signup" onclick="window.location.href = '{{ url_for('signup') }}'" ">Signup</button>
-          <!-- <a href=""></a> -->
-        </div>
-      </header>
+      <nav class="site_navigation">
+        <div class="LOGO">CLIENT</div>
+        <ul>
+          <li><a class="nav__anc" href="#">Explore</a></li>
+          <li><a class="nav__anc" href="#">Resources</a></li>
+        </ul>
+      </nav>
+      <div>
+        <!-- <button class="btn signup" >Log Out</button> -->
+        <a class="btn signup" href="{{ url_for('logout') }}">Log Out</a>
+      </div>
+    </header>
     <div class="site_container">{% block content %} {% endblock %}</div>
   </body>
 </html>

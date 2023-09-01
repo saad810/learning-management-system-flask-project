@@ -64,6 +64,13 @@ header .LOGO {
     transition: 0.1s ease-out;
     color: #fff;
 }
+.login{
+    font-size: 16px;
+    color: #f17300;
+    background-color: #054a91;
+    border: none;
+
+}
 
 /* footer */
 

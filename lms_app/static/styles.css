@@ -11,3 +11,11 @@
 .active{
     color: #2274a5;
  }
+.flash-message{
+    border: 2px solid #bde4ee;
+    color: #2274a5;
+    padding: 10px 5px;
+    text-align: left;  
+    
+    background-color: #bde4ee;  
+}

@@ -1,0 +1,25 @@
+{% extends './layouts/layout_admin.html' %}
+{% block content %}
+<table>
+  <thead>
+
+    <tr>
+      <th>id</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Accout Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for users in user %}
+    <tr>
+      <td>{{ users.id }}</td>
+      <td>{{ users.username }}</td>
+      <td>{{ users.email }}</td>
+      <td>{{ users.acc_type }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

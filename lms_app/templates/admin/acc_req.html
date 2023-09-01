@@ -1,4 +1,4 @@
-{% extends './layouts/layout_user.html' %}
+{% extends './layouts/layout_admin.html' %}
 {% block content %}
 
 <section class="form-area align-center">
@@ -49,7 +49,16 @@
             {% else %} {{ form.confirm_password }} {% endif %}
           </div>
           <div class="form-element">
-            <p>Already have account?<a href="#" class="active">Login</a></p>
+            {{ form.message.label }} {% if form.message.errors %} {{form.message}}
+            <div class="invalid-feedback">
+              {% for error in form.message.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %} {{ form.message }} {% endif %}
+          </div>
+          <div class="form-element">
+            <p>Already have account?<a href="{{ url_for('admin_login') }}" class="active">Login</a></p>
           </div>
   
           <div class="button-element">
