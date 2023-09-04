@@ -24,6 +24,11 @@
       type="text/css"
       href="{{ url_for('static', filename='table.css') }}"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='create_course.css') }}"
+    />
   </head>
   <body>
     <header class="site_container site__header">
@@ -31,13 +36,13 @@
         <div class="LOGO">ADMIN</div>
         <ul>
           <li>
-            <a class="nav__anc" href="{{ url_for('admin_view_users') }}"
+            <a class="nav__anc" href="{{ url_for('admin.admin_view_users') }}"
               >Users</a
             >
           </li>
           <li><a class="nav__anc" href="#">Courses</a></li>
           <li>
-            <a class="nav__anc" href="{{ url_for('admin_view_contact') }}"
+            <a class="nav__anc" href="{{ url_for('admin.admin_view_contact') }}"
               >FormsResponse</a
             >
           </li>
@@ -46,7 +51,7 @@
         </ul>
       </nav>
       <div>
-        <a class="btn signup" href="{{ url_for('admin_logout') }}">Log Out</a>
+        <a class="btn signup" href="{{ url_for('admin.admin_logout') }}">Log Out</a>
         <!-- <a href=""></a> -->
       </div>
     </header>

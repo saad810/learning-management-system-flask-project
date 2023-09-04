@@ -26,19 +26,19 @@
         <div class="LOGO">CLIENT</div>
         <ul>
           <li>
-            <a class="nav__anc" href="{{ url_for('global_home') }}">Explore</a>
+            <a class="nav__anc" href="{{ url_for('main.global_home') }}">Explore</a>
           </li>
           <li><a class="nav__anc" href="#">Resources</a></li>
           <li>
-            <a class="nav__anc" href="{{ url_for('admin_login') }}"
+            <a class="nav__anc" href="{{ url_for('admin.admin_login') }}"
               >Admin Login</a
             >
           </li>
           <li>
-            <a class="nav__anc" href="{{ url_for('contact') }}">Contact</a>
+            <a class="nav__anc" href="#">Contact</a>
           </li>
           <li>
-            <a class="nav__anc" href="{{ url_for('admin_acc_request') }}"
+            <a class="nav__anc" href="{{ url_for('users.admin_acc_request') }}"
               >Account Request</a
             >
           </li>
@@ -47,13 +47,13 @@
       <div>
         <button
           class="btn login"
-          onclick="window.location.href = '{{ url_for('login') }}'"
+          onclick="window.location.href = '{{ url_for('users.login') }}'"
         >
           Login
         </button>
         <button
           class="btn signup"
-          onclick="window.location.href = '{{ url_for('signup') }}'"
+          onclick="window.location.href = '{{ url_for('users.signup') }}'"
         >
           Signup
         </button>
