@@ -1,0 +1,57 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.site_container {
+    padding: 0px 80px;
+}
+
+.active {
+    color: #2274a5;
+}
+
+.flash-message {
+    border: 2px solid #bde4ee;
+    color: #2274a5;
+    padding: 10px 5px;
+    text-align: left;
+
+    background-color: #bde4ee;
+}
+
+.user-card-title {
+    /* border: 2px solid seagreen; */
+    padding: 10px 0px;
+
+}
+
+.user-card-title-text {
+    font-size: 28px;
+}
+
+.user-class-container {
+    /* border: 2px solid purple; */
+    padding: 10px 0px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-card {
+    padding: 15px 8px;
+    /* border: 2px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.user-card-text {
+    font-size: 25px;
+    font-weight: 700;
+}

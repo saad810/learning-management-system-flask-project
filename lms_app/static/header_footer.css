@@ -1,0 +1,76 @@
+.site__header {
+    background-color: #054a91;
+    /* Background color */
+    color: #fff;
+    /* Text color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    /* padding: 12px 20px; */
+}
+
+/* Style for the logo */
+header .LOGO {
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Style for the navigation menu */
+.site_navigation {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.site_navigation ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav__anc {
+    text-decoration: none;
+    color: #fff;
+    font-size: 17px;
+}
+.nav__anc:hover{
+    color: #dbe4ee;
+    
+}
+ 
+
+
+/* Style for the SignUp button */
+.btn {
+    border: none;
+    padding: 6px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.signup {
+    font-size: 16px;
+    border: 2px solid #f17300; 
+    color: #f17300;
+    background-color: #054a91;
+}
+
+.signup:hover {
+    background-color: #f17300;
+    transition: 0.1s ease-out;
+    color: #fff;
+}
+.login{
+    font-size: 16px;
+    color: #f17300;
+    background-color: #054a91;
+    border: none;
+
+}
+
+/* footer */
+
