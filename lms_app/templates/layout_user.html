@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Page Title</title>
+    {% if title %}
+    <title>{{ title }} | learning Management System</title>
+    {% else %}
+    <title>Learning Management System</title>
+    {% endif %}
     <link
       rel="stylesheet"
       type="text/css"
@@ -26,39 +30,22 @@
         <div class="LOGO">CLIENT</div>
         <ul>
           <li>
-            <a class="nav__anc" href="{{ url_for('main.global_home') }}">Explore</a>
+            <a class="nav__anc" href="{{ url_for('explore') }}">Explore</a>
           </li>
           <li><a class="nav__anc" href="#">Resources</a></li>
           <li>
-            <a class="nav__anc" href="{{ url_for('admin.admin_login') }}"
-              >Admin Login</a
-            >
-          </li>
-          <li>
             <a class="nav__anc" href="#">Contact</a>
-          </li>
-          <li>
-            <a class="nav__anc" href="{{ url_for('users.admin_acc_request') }}"
-              >Account Request</a
-            >
           </li>
         </ul>
       </nav>
       <div>
-        <button
-          class="btn login"
-          onclick="window.location.href = '{{ url_for('users.login') }}'"
-        >
-          Login
-        </button>
-        <button
-          class="btn signup"
-          onclick="window.location.href = '{{ url_for('users.signup') }}'"
-        >
+        <button class="btn login">Login</button>
+        <button class="btn signup" onclick="window.location.href = '{{ url_for('signup') }}'">
           Signup
-        </button>
+      </button>
       </div>
     </header>
     <div class="site_container">{% block content %}{% endblock %}</div>
+    <script src="{{ url_for('static', filename='js/btn.js') }}"></script>
   </body>
 </html>
