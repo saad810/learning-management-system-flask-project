@@ -39,13 +39,17 @@
         </ul>
       </nav>
       <div>
-        <button class="btn login">Login</button>
+        <button class="btn login"  onclick="window.location.href = '{{ url_for('login') }}'">Login</button>
         <button class="btn signup" onclick="window.location.href = '{{ url_for('signup') }}'">
           Signup
       </button>
       </div>
     </header>
-    <div class="site_container">{% block content %}{% endblock %}</div>
+    <div class="site_container">
+      <div class="flash-message flash-display" id = flash_msg>
+        {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
+      </div>
+      {% block content %}{% endblock %}</div>
     <script src="{{ url_for('static', filename='js/btn.js') }}"></script>
   </body>
 </html>

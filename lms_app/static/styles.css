@@ -15,6 +15,7 @@
 }
 
 .flash-message {
+    display: none;
     border: 2px solid #bde4ee;
     color: #2274a5;
     padding: 10px 5px;

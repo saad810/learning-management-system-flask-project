@@ -2,9 +2,6 @@
 
 <section class="form-area align-center">
   <section class="form-section content-dir">
-    <div class="flash-message">
-      {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
-    </div>
     <div class="form-header">
       <h1 class="header-text">Register Now</h1>
     </div>
@@ -51,14 +48,7 @@
           {% else %} {{ form.confirm_password }} {% endif %}
         </div>
         <div class="form-element">
-          <p>
-            Already have account?<a
-              href="#"
-              class="active"
-            >
-              Login</a
-            >
-          </p>
+          <p>Already have account?<a href="#" class="active"> Login</a></p>
         </div>
 
         <div class="button-element">
