@@ -20,4 +20,23 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"<User {self.username}>"
+
+class Course(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), nullable=False)
+    intro = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(1000))
     
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    
+    # Define a relationship with the User model
+    user = db.relationship('User', backref=db.backref('courses', lazy=True))
+
+    def __init__(self, title,intro, description, user_id):
+        self.title = title
+        self.intro = intro
+        self.description = description
+        self.user_id = user_id
+
+    def __repr__(self):
+        return f"<Course {self.title}>"

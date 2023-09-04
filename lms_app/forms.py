@@ -29,30 +29,26 @@ class LoginForm(FlaskForm):
 
 
 class CreateCourseForm(FlaskForm):
-    title = StringField('Name',   validators=[
+    title = StringField('Course Title',   validators=[
         DataRequired(message='this field is required')])
-    introduction = TextAreaField('Email',         validators=[
+    introduction = TextAreaField('Introduction', validators=[
         DataRequired(message='this field is required')])
-    description = TextAreaField('Your Message', validators=[
+    description = TextAreaField('Description', validators=[
                                 DataRequired(message='type your message here')])
     submit = SubmitField('Create Course')
 
 
 class CreateCourseModuleForm(FlaskForm):
-    title = StringField('Name',   validators=[
+    title = StringField('Module Title',   validators=[
         DataRequired(message='this field is required')])
-    introduction = TextAreaField('Email',         validators=[
+    introduction = TextAreaField('Introduce your Module',         validators=[
         DataRequired(message='this field is required')])
-    description = TextAreaField('Your Message', validators=[
+    description = TextAreaField('Describe your module', validators=[
                                 DataRequired(message='type your message here')])
 #    to add resources form field
-
-    submit = SubmitField('Create Course')
-
-
-class ModuleResoursesForm(FlaskForm):
     video_link = URLField('Enter Youtube Video Link')
     file_upload = MultipleFileField('Module Resources')
-    submit = SubmitField('Add Resources')
+
+    submit = SubmitField('Create Module')
 
 

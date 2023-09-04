@@ -1,0 +1,110 @@
+{% extends 'layout_user_PA.html' %}
+{% block content %}
+<section class="course-create_title">
+  <h1 class="course-create_title-text">Create Modules</h1>
+</section>
+<div class="course-create_container">
+  <div class="module-course_box">
+    <div>
+      <form method="POST" class="form-container">
+        {{ form.hidden_tag() }}
+
+        <div class="form-element">
+          {{ form.title.label }}
+          {% if form.title.errors %}
+          {{ form.title(class="form-control is-invalid") }}
+          <div class="invalid-feedback">
+            {% for error in form.title.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.title(class="form-control") }}
+          {% endif %}
+        </div>
+        <div class="form-element">
+          {{ form.introduction.label }}
+          {% if form.introduction.errors %}
+          {{ form.introduction(class="form-control is-invalid") }}
+          <div class="invalid-feedback">
+            {% for error in form.introduction.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.introduction(class="form-control") }}
+          {% endif %}
+        </div>
+        <div class="form-element">
+          {{ form.description.label }}
+          {% if form.description.errors %}
+          {{ form.description(class="form-control is-invalid") }}
+          <div class="invalid-feedback">
+            {% for error in form.description.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.description(class="form-control") }}
+          {% endif %}
+        </div>
+        <div class="form-element">
+          {{ form.video_link.label }}
+          {% if form.video_link.errors %}
+          {{ form.video_link(class="form-control is-invalid") }}
+          <div class="invalid-feedback">
+            {% for error in form.video_link.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.video_link(class="form-control") }}
+          {% endif %}
+        </div>
+        <div class="form-element">
+          {{ form.file_upload.label }}
+          {% if form.file_upload.errors %}
+          {{ form.file_upload(class="form-control is-invalid") }}
+          <div class="invalid-feedback">
+            {% for error in form.file_upload.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.file_upload(class="form-control") }}
+          {% endif %}
+        </div>
+
+        <div class="button-element">
+            {{ form.submit(class = "buttonForm") }}
+            <a href="" class="buttonForm1"> Done </a>
+          </div>
+      </form>
+    </div>
+  </div>
+  <div class="box right-container_module">
+    <h3>Instructions</h3>
+    <ul class="course_instructions-container">
+      <li class="instructions">
+        Try to write a precise title. The title plays an important role in ranking our course on the first page.
+      </li>
+      <li class="instructions">
+        Introduce your course in the introduction section. This will be visible on the front page after the title and course video. It is highly likely that students will enroll in a course after learning its introduction.
+      </li>
+      <li class="instructions">
+        Describe everything about your course in the description section.
+      </li>
+      <li class="instructions instruc-green">
+        Upload video to youtube, Set to private, and then paste the link here other wise it will note be accepted
+ 
+    </li>
+    </ul>
+    <ul class="course_instructions-container">
+      <li class="red_instructions">
+        Your course may be rejected if it does not deliver value to students.
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

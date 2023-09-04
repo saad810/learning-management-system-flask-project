@@ -14,6 +14,24 @@
     color: #2274a5;
 }
 
+.instructions {
+    list-style-type: disc;
+    padding-top: 10px;
+}
+
+.course_instructions-container {
+    padding-left: 20px;
+
+}
+
+.instruc-green {
+    color: green;
+}
+
+.red_instructions {
+    color: red;
+}
+
 .flash-message {
     display: none;
     border: 2px solid #bde4ee;

@@ -86,11 +86,12 @@ span {
     text-align: center;
 }
 
-.form-container {}
+
 textarea{
     line-height: 1.5;
     resize: vertical;
 }
+
 
 input, textarea {
     width: 100%;
@@ -131,6 +132,25 @@ label {
 .buttonForm:hover {
     /* background-color: rgb(7, 168, 231); */
     background-color: #f17300;
+    color: white;
+    transition: 0.1s ease-in;
+}
+.buttonForm1{
+    /* background-color: ; */
+    border: 2px solid #054a91; 
+    color: #054a91;
+    background-color: white;
+    border-radius: 5px;
+    /* color: white; */
+    width: fit-content;
+    padding: 5px 20px;
+    font-size: 18px;
+    /* border: none; */
+}
+
+.buttonForm1:hover {
+    /* background-color: rgb(7, 168, 231); */
+    background-color:#054a91 ;
     color: white;
     transition: 0.1s ease-in;
 }
