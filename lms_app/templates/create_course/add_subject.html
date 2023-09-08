@@ -1,6 +1,6 @@
 {% extends 'layout_user_PA.html' %} {% block content %}
 <section class="course-create_title">
-  <h1 class="course-create_title-text">Create Course</h1>
+  <h1 class="course-create_title-text">Add Subject</h1>
 </section>
 <div class="course-create_container">
   <div class="module-course_box">
@@ -17,36 +17,6 @@
           </div>
           {% else %} {{ form.title }} {% endif %}
         </div>
-        <div class="form-element">
-          <label for="selectBox" name = "SelectBox">Select Subject:</label>
-          <select id="selectBox">
-            {% for item in data %}
-            <option value="{{ item[0] }}">{{ item[0] }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="form-element">
-          {{ form.introduction.label }} {% if form.introduction.errors %}
-          {{form.introduction}}
-          <div class="invalid-feedback">
-            {% for error in form.introduction.errors %}
-            <span>{{ error }}</span>
-            {% endfor %}
-          </div>
-          {% else %} {{ form.introduction }} {% endif %}
-        </div>
-        <div class="form-element">
-          {{ form.description.label }} {% if form.description.errors %}
-          {{form.description(class = "description_field")}}
-          <div class="invalid-feedback">
-            {% for error in form.description.errors %}
-            <span>{{ error }}</span>
-            {% endfor %}
-          </div>
-          {% else %} {{form.description(class = "description_field")}} {% endif
-          %}
-        </div>
-
         <div class="button-element">
           {{ form.submit(class = "buttonForm") }}
         </div>

@@ -22,8 +22,9 @@ class LoginForm(FlaskForm):
     username = StringField('username',   validators=[
                            DataRequired(message='this field is required')])
 
-    password = PasswordField('Password', validators=[
-                             DataRequired(message='this field is required')])
+    # password = PasswordField('Password', validators=[
+    #                          DataRequired(message='this field is required')])
+    
 
     submit = SubmitField('Login')
 
@@ -36,6 +37,10 @@ class CreateCourseForm(FlaskForm):
     description = TextAreaField('Description', validators=[
                                 DataRequired(message='type your message here')])
     submit = SubmitField('Create Course')
+
+class AddSubjectForm(FlaskForm):
+    title = StringField('Add Subject', validators =[DataRequired()])
+    submit = SubmitField('Add Subject')
 
 
 class CreateCourseModuleForm(FlaskForm):

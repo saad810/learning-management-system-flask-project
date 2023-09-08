@@ -30,9 +30,19 @@
       <nav class="site_navigation">
         <div class="LOGO">USER AREA</div>
         <ul>
-          <li><a class="nav__anc" href="#">Explore</a></li>
-          <li><a class="nav__anc" href="#">Resources</a></li>
-          <li><a class="nav__anc" href="{{ url_for('user_create_course') }}">Create Course</a></li>
+          <li>
+            <a class="nav__anc" href="{{ url_for('user_home') }}">Home</a>
+          </li>
+          <li>
+            <a class="nav__anc" href="{{ url_for('user_create_course') }}"
+              >Create Course</a
+            >
+          </li>
+          <li>
+            <a class="nav__anc" href="{{ url_for('add_subject') }}"
+              >Add Subject</a
+            >
+          </li>
         </ul>
       </nav>
       <div>
